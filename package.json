@@ -1,0 +1,32 @@
+{
+  "name": "setup-sentinel",
+  "version": "1.0.0",
+  "description": "A GitHub Action to install a specific version of HashiCorp Sentinel and add it to PATH.",
+  "keywords": [
+    "github-actions",
+    "hashicorp",
+    "sentinel"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hashicorp/setup-sentinel.git"
+  },
+  "license": "Apache-2.0",
+  "author": "HashiCorp Compliance Team <info@hashicorp.com>",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && ncc build --no-cache",
+    "fmt": "prettier --write 'src/*.ts'",
+    "copywrite": "copywrite headers && copywrite license"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.10",
+    "@types/semver": "^7.5.8",
+    "@vercel/ncc": "^0.38.1",
+    "typescript": "^5.4.5"
+  }
+}

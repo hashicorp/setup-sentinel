@@ -1,0 +1,22 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+---
+
+name: "Setup HashiCorp Sentinel"
+author: "HashiCorp Compliance Team"
+description: "A GitHub Action to install a specific version of HashiCorp Sentinel and add it to PATH."
+inputs:
+  version:
+    description: "The Sentinel version to install and add to PATH."
+    required: true
+    default: "latest"
+outputs:
+  version:
+    description: "The Sentinel version that was installed and added to PATH."
+runs:
+  using: "node20"
+  main: "dist/index.js"
+branding:
+  icon: "package"
+  color: "blue"

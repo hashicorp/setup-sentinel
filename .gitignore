@@ -1,0 +1,4 @@
+# TODO: generate dist folder in CI
+# dist/
+node_modules/
+dist/*.js.map
