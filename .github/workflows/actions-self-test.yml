@@ -1,0 +1,53 @@
+---
+
+name: "GitHub Action: Self-Test"
+
+on:
+  push:
+
+env:
+  PRODUCT_VERSION: "1.10.0"
+
+jobs:
+  setup-sentinel:
+    name: Test `setup-sentinel`
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
+
+      - name: Setup `sentinel` (using local GitHub Action)
+        uses: "./"
+        id: setup
+        with:
+          version: ${{ env.PRODUCT_VERSION }}
+
+      - name: Print `$PATH` for `sentinel`
+        run: which sentinel
+
+      - name: Print `sentinel` version
+        run: sentinel version
+
+      - name: Validate `sentinel` version is accurate
+        run: "sentinel version | grep --silent 'Sentinel v${{ env.PRODUCT_VERSION }}'"
+
+      - name: Run `sentinel fmt`
+        run: sentinel fmt "./test/hello-world.pkr.hcl"
+
+      - name: Setup `sentinel` with an invalid version (using local GitHub Action)
+        uses: "./"
+        id: invalid_version
+        with:
+          version: "invalid_version"
+        continue-on-error: true
+
+      - name: Validate invalid version failed
+        if: steps.invalid_version.outcome == 'success'
+        run: echo "Installing an invalid version expected to fail but did not" && exit 1
+
+      - name: Setup `sentinel` with `latest` version (using local GitHub Action)
+        uses: "./"
+        id: latest_version
+
+      - name: Print `sentinel` version
+        run: sentinel version
