@@ -47,8 +47,8 @@ jobs:
         with:
           version: ${{ env.PRODUCT_VERSION }}
 
-      - name: Run `sentinel init`
-        id: init
+      - name: Run `sentinel test`
+        id: test
         run: "sentinel test"
 ```
 
