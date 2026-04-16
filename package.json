@@ -20,7 +20,7 @@
     "copywrite": "copywrite headers && copywrite license"
   },
   "dependencies": {
-    "@actions/core": "^2.0.1",
+    "@actions/core": "^3.0.0",
     "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v1.0.0"
   },
   "devDependencies": {
