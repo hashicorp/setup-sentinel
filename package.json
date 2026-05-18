@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@actions/core": "^2.0.1",
-    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v1.0.0"
+    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v1.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.19.1",
